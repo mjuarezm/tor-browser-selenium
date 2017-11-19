@@ -131,9 +131,10 @@ class TorBrowserDriver(FirefoxDriver):
         self.tbb_browser_dir = abspath(join(tbb_path,
                                             cm.DEFAULT_TBB_BROWSER_DIR))
         if tor_data_dir:
-            self.tor_data_dir = tor_data_dir  # only relevant if we launch tor
+            tor_data_dir = tor_data_dir  # only relevant if we launch tor
         else:
-            self.tor_data_dir = join(tbb_path, cm.DEFAULT_TOR_DATA_PATH)
+            tor_data_dir = join(tbb_path, cm.DEFAULT_TOR_DATA_PATH)
+        tor_data_dir = abspath(tor_data_dir)
         # TB can't find bundled "fonts" if we don't switch to tbb_browser_dir
         chdir(self.tbb_browser_dir)
 
