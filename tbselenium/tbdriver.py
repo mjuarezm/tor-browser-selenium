@@ -108,6 +108,10 @@ class TorBrowserDriver(FirefoxDriver):
         1) path to TBB directory, or
         2) path to TBB's Firefox binary and profile
         """
+        tbb_path = abspath(tbb_path)
+        tbb_fx_binary_path = abspath(tbb_fx_binary_path)
+        tbb_profile_path = abspath(tbb_profile_path)
+        tor_data_dir = abspath(tor_data_dir)
         if not (tbb_path or (tbb_fx_binary_path and tbb_profile_path)):
             raise TBDriverPathError("Either TBB path or Firefox profile"
                                     " and binary path should be provided"
