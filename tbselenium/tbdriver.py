@@ -1,5 +1,5 @@
 import shutil
-from os import environ, chdir
+from os import environ, chdir, system
 from os.path import isdir, isfile, join, abspath
 from time import sleep
 from selenium import webdriver
@@ -327,6 +327,7 @@ class TorBrowserDriver(FirefoxDriver):
                 print("[tbselenium] Exception while quitting: %s" % e)
 
     def __enter__(self):
+        system("killall -9 firefox")
         return self
 
     def __exit__(self, exc_type, value, traceback):
